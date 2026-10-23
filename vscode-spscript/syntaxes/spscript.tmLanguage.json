@@ -1,0 +1,171 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Spectra3D Script",
+  "scopeName": "source.sps",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#keywords" },
+    { "include": "#functions" },
+    { "include": "#operators" },
+    { "include": "#punctuation" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.sps",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.sps",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.triple.sps",
+          "begin": "\"\"\"",
+          "end": "\"\"\""
+        },
+        {
+          "name": "string.quoted.double.fstring.sps",
+          "begin": "\\bf\"",
+          "end": "\"",
+          "patterns": [
+            { "include": "#fstring" },
+            { "include": "#escapes" }
+          ]
+        },
+        {
+          "name": "string.quoted.single.fstring.sps",
+          "begin": "\\bf'",
+          "end": "'",
+          "patterns": [
+            { "include": "#fstring" },
+            { "include": "#escapes" }
+          ]
+        },
+        {
+          "name": "string.quoted.double.sps",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [{ "include": "#escapes" }]
+        },
+        {
+          "name": "string.quoted.single.sps",
+          "begin": "'",
+          "end": "'",
+          "patterns": [{ "include": "#escapes" }]
+        }
+      ]
+    },
+    "fstring": {
+      "patterns": [
+        {
+          "name": "meta.embedded.expression.sps",
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [{ "include": "source.sps" }]
+        }
+      ]
+    },
+    "escapes": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.sps",
+          "match": "\\\\(n|t|r|0|\\\\|\"|')"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.sps",
+          "match": "\\b\\d+\\.\\d+([eE][+-]?\\d+)?\\b"
+        },
+        {
+          "name": "constant.numeric.hex.sps",
+          "match": "\\b0[xX][0-9a-fA-F]+\\b"
+        },
+        {
+          "name": "constant.numeric.integer.sps",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.sps",
+          "match": "\\b(if|elif|else|while|for|in|break|continue|return|try|catch|import|as)\\b"
+        },
+        {
+          "name": "keyword.declaration.sps",
+          "match": "\\b(let|var|def|class|struct)\\b"
+        },
+        {
+          "name": "support.type.sps",
+          "match": "\\b(int|float|double|str|string|bool|list|dict)\\b(?=\\s+[A-Za-z_])"
+        },
+        {
+          "name": "keyword.operator.logical.sps",
+          "match": "\\b(and|or|not)\\b"
+        },
+        {
+          "name": "constant.language.sps",
+          "match": "\\b(true|false|nil)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.sps",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*(?=\\s*\\()"
+        },
+        {
+          "name": "support.function.builtin.sps",
+          "match": "\\b(print|len|str|int|float|double|bool|type|input|range|abs|min|max|sum|ord|chr|read_file|write_file|append_file|file_exists|delete_file|file_size|list_dir|make_dir|time|now|sleep|json_parse|json_stringify|sqrt|sin|cos|tan|atan2|pow|floor|ceil|round|random|random_range)\\b"
+        },
+        {
+          "name": "support.function.method.sps",
+          "match": "\\b(upper|lower|strip|split|replace|find|startswith|endswith|contains|count|isdigit|isalpha|isspace|append|pop|insert|remove|index|reverse|sort|clear|join|get|has|keys|values|items)\\b(?=\\s*\\()"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.sps",
+          "match": "\\+=|-=|\\*=|/=|%=|="
+        },
+        {
+          "name": "keyword.operator.comparison.sps",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.arithmetic.sps",
+          "match": "\\+|-|\\*|/|%"
+        },
+        {
+          "name": "keyword.operator.bitwise.sps",
+          "match": "&&|\\|\\||!|&|\\||\\^|~|<<|>>"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        { "name": "punctuation.separator.sps", "match": ";" },
+        { "name": "punctuation.separator.sps", "match": "," },
+        { "name": "punctuation.separator.sps", "match": ":" },
+        { "name": "punctuation.section.block.sps", "match": "[{}]" },
+        { "name": "punctuation.section.group.sps", "match": "[\\[\\]()]"}
+      ]
+    }
+  }
+}

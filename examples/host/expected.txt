@@ -1,0 +1,66 @@
+[assets] the material assets/player.mat is loaded
+[assets] the texture assets/player.png is loaded
+[audio] play theme.ogg (volume 0.50, pitch 1.00)
+[shader] the shader assets/water.shader is compiled
+[material] the material assets/water.mat is loaded
+[engine] the direction of the look:
+[engine] <Vector3 object>
+[assets] the texture assets/hero.png is loaded
+[audio] the bus music is created
+[audio] the bus effects is created
+[engine] the scene
+[engine] scene
+[engine] is ready
+[engine] the player is at
+[engine] <Vector3 object>
+[engine] the action jump is bound to
+[engine] space
+[engine] the ray found:
+[engine] player
+[engine] 0.0
+[audio] play jump.wav (volume 0.80, pitch 1.00)
+[engine] the timer is fired
+[engine] the coin is taken:
+[engine] coin
+[audio] stop jump.wav
+[engine] the event is fired:
+[engine] coin
+[engine] the script is ready
+[audio] stop theme.ogg
+[engine] the helper gives
+[engine] 42
+[engine] the math:
+[engine] 5.0
+[engine] 10.0
+[engine] -1.0
+[engine] the screen:
+[engine] <Vector3 object>
+[engine] the point on the screen:
+[engine] 420.0
+[engine] 264.0
+[engine] the point in the world:
+[engine] 10.0
+[engine] 20.0
+[render] draw sprite assets/hero.png at (120.0, 80.0) 64.0x64.0 z 10 (1.00, 0.90, 0.20, 1.00)
+[render] begin
+[render] clear (0.10, 0.10, 0.20, 1.00)
+[render] viewport (0.0, 0.0) 800.0x600.0
+[render] rect (20.0, 20.0) 120.0x60.0 filled (0.20, 0.60, 1.00, 0.50)
+[render] circle (400.0, 300.0) r 48.0 empty (1.00, 0.50, 0.00, 1.00)
+[render] line (0.0, 0.0) - (800.0, 600.0) (0.30, 0.30, 0.30, 1.00)
+[render] text coins: 1 at (16.0, 24.0) size 18.0 (1.00, 1.00, 1.00, 1.00)
+[render] sprite assets/coin.png at (220.0, 80.0) 32.0x32.0 z 5 (1.00, 1.00, 1.00, 1.00)
+[render] sprite assets/hero.png at (120.0, 80.0) 64.0x64.0 z 10 (1.00, 0.90, 0.20, 1.00)
+[render] end
+[engine] the master volume is
+[engine] 0.75
+[engine] the bus
+[engine] music
+[engine] the bus
+[engine] effects
+[audio] play theme.ogg (volume 0.19, pitch 1.00)
+[audio] play coin.wav (volume 0.45, pitch 1.00)
+[audio] play coin.wav (volume 0.00, pitch 1.00)
+[audio] stop theme.ogg
+[audio] play theme.ogg (volume 0.19, pitch 1.00)
+[engine] the script returned: 2

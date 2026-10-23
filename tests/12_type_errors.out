@@ -1,0 +1,1 @@
+tests\12_type_errors.sps:2: error: cannot initialize 'int' with 'str'

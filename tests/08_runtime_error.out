@@ -1,0 +1,4 @@
+before
+tests\08_runtime_error.sps:3: error: division by zero
+  in divide (line 3)
+  in <module> (line 7)

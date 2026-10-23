@@ -1,0 +1,6 @@
+5.0
+caught: division by zero
+index: list index out of range
+inner: division by zero
+outer: division by zero
+done

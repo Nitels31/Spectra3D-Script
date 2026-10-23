@@ -1,0 +1,5 @@
+{
+    "name": "MyGame",
+    "main": "scripts/main.sps",
+    "lib": ["lib"]
+}

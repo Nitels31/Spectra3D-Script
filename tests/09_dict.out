@@ -1,0 +1,10 @@
+Spectra3D 1
+3
+true false
+default
+2 false
+key: extra = true
+key: name = Spectra3D
+[extra, name] [true, Spectra3D]
+[[extra, true], [name, Spectra3D]]
+{} 0

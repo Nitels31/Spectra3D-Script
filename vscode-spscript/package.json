@@ -1,0 +1,150 @@
+{
+  "name": "spscript",
+  "displayName": "Spectra3D Script",
+  "description": "Run, compile and debug .sps files (Spectra3D Script).",
+  "version": "0.1.0",
+  "publisher": "spectra3d",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "sps",
+    "spectra3d",
+    "spscript"
+  ],
+    "activationEvents": [
+        "onLanguage:spscript",
+        "onCommand:spscript.runFile",
+        "onCommand:spscript.runWithArgs",
+        "onCommand:spscript.compileFile",
+        "onCommand:spscript.checkFile"
+    ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "spscript",
+        "aliases": [
+          "Spectra3D Script",
+          "spscript",
+          "sps"
+        ],
+        "extensions": [
+          ".sps"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "spl",
+        "aliases": [
+          "SPL",
+          "Spectra3D Data"
+        ],
+        "extensions": [
+          ".spl"
+        ],
+        "configuration": "./spl-language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "spscript",
+        "scopeName": "source.sps",
+        "path": "./syntaxes/spscript.tmLanguage.json"
+      },
+      {
+        "language": "spl",
+        "scopeName": "source.spl",
+        "path": "./syntaxes/spl.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "spscript.runFile",
+        "title": "SPScript: Run File",
+        "icon": "$(play)"
+      },
+      {
+        "command": "spscript.runWithArgs",
+        "title": "SPScript: Run File With Arguments..."
+      },
+      {
+        "command": "spscript.compileFile",
+        "title": "SPScript: Compile File (no run)"
+      },
+      {
+        "command": "spscript.checkFile",
+        "title": "SPScript: Check File (show the problems)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "spscript.runFile",
+        "key": "f5",
+        "when": "editorLangId == spscript"
+      },
+      {
+        "command": "spscript.runFile",
+        "key": "ctrl+f5",
+        "when": "editorLangId == spscript"
+      },
+      {
+        "command": "spscript.compileFile",
+        "key": "ctrl+b",
+        "when": "editorLangId == spscript"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "spscript.runFile",
+          "when": "editorLangId == spscript",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "spscript.runFile",
+          "when": "editorLangId == spscript"
+        },
+        {
+          "command": "spscript.runWithArgs",
+          "when": "editorLangId == spscript"
+        },
+        {
+          "command": "spscript.compileFile",
+          "when": "editorLangId == spscript"
+        },
+        {
+          "command": "spscript.checkFile",
+          "when": "editorLangId == spscript"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Spectra3D Script",
+      "properties": {
+        "spscript.compilerPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Path to `spsc` (the Spectra3D Script compiler). When empty the extension looks for `bin/spsc.exe` in the workspace folders and then falls back to `spsc` from `PATH`."
+        },
+        "spscript.outputDirectory": {
+          "type": "string",
+          "default": "out",
+          "markdownDescription": "Directory (relative to the workspace) where the compiled `.spc` files are written."
+        },
+        "spscript.runArguments": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Extra arguments passed to the compiler when running a file."
+        }
+      }
+    }
+  }
+}
