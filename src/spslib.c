@@ -1,10 +1,11 @@
 // Spectra3D Script - standard library (files, time, json, math)
 
-#include "spslib.h"
-#include "dict.h"
-#include "regex.h"
-#include "spl.h"
-#include "vm.h"
+#include "internal/spslib.h"
+#include "internal/dict.h"
+#include "internal/regex.h"
+#include "internal/spl.h"
+#include "internal/vm.h"
+#include "internal/term.h"
 
 #include <ctype.h>
 #include <math.h>
@@ -1681,4 +1682,85 @@ Value sps_regex_group_count(VM* vm, int argc, Value* args, void* user) {
     if (argc != 1) vm_runtime_error(vm, 0, "regexGroupCount() expects 1 argument");
     Regex* regex = arg_regex(vm, args[0], "regexGroupCount");
     return value_int(regex_group_count(regex));
+}
+
+// ------------------------------------------------------------------
+// Colored print functions
+// ------------------------------------------------------------------
+
+// Internal helper: print all args separated by spaces (same as builtin_print),
+// then a newline. Color is set/reset around the output.
+static Value print_colored(VM* vm, int argc, Value* args, const char* color_code) {
+    (void)vm;
+    term_color(stdout, color_code);
+    for (int i = 0; i < argc; i++) {
+        if (i > 0) fputc(' ', stdout);
+        value_write(stdout, args[i]);
+    }
+    term_reset(stdout);
+    fputc('\n', stdout);
+    return value_nil();
+}
+
+Value sps_print_red(VM* vm, int argc, Value* args, void* user) {
+    (void)user;
+    return print_colored(vm, argc, args, TERM_RED);
+}
+
+Value sps_print_green(VM* vm, int argc, Value* args, void* user) {
+    (void)user;
+    return print_colored(vm, argc, args, TERM_GREEN);
+}
+
+Value sps_print_yellow(VM* vm, int argc, Value* args, void* user) {
+    (void)user;
+    return print_colored(vm, argc, args, TERM_YELLOW);
+}
+
+Value sps_print_blue(VM* vm, int argc, Value* args, void* user) {
+    (void)user;
+    return print_colored(vm, argc, args, TERM_BLUE);
+}
+
+Value sps_print_cyan(VM* vm, int argc, Value* args, void* user) {
+    (void)user;
+    return print_colored(vm, argc, args, TERM_CYAN);
+}
+
+Value sps_print_magenta(VM* vm, int argc, Value* args, void* user) {
+    (void)user;
+    return print_colored(vm, argc, args, TERM_MAGENTA);
+}
+
+Value sps_print_bold(VM* vm, int argc, Value* args, void* user) {
+    (void)user;
+    return print_colored(vm, argc, args, TERM_BOLD);
+}
+
+// printColored(color, ...) — first arg is a color name string
+Value sps_print_colored(VM* vm, int argc, Value* args, void* user) {
+    (void)user;
+    if (argc < 1 || args[0].type != VAL_STRING) {
+        vm_runtime_error(vm, 0, "printColored() expects a color name as the first argument");
+    }
+    const char* name = ((ObjString*)args[0].as.obj)->chars;
+    const char* code = TERM_RESET;
+    if      (strcmp(name, "red")     == 0) code = TERM_RED;
+    else if (strcmp(name, "green")   == 0) code = TERM_GREEN;
+    else if (strcmp(name, "yellow")  == 0) code = TERM_YELLOW;
+    else if (strcmp(name, "blue")    == 0) code = TERM_BLUE;
+    else if (strcmp(name, "cyan")    == 0) code = TERM_CYAN;
+    else if (strcmp(name, "magenta") == 0) code = TERM_MAGENTA;
+    else if (strcmp(name, "bold")    == 0) code = TERM_BOLD;
+    else if (strcmp(name, "dim")     == 0) code = TERM_DIM;
+    else if (strcmp(name, "reset")   == 0) code = TERM_RESET;
+
+    term_color(stdout, code);
+    for (int i = 1; i < argc; i++) {
+        if (i > 1) fputc(' ', stdout);
+        value_write(stdout, args[i]);
+    }
+    term_reset(stdout);
+    fputc('\n', stdout);
+    return value_nil();
 }

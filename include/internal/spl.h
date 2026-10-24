@@ -12,7 +12,7 @@
 #ifndef SPS_SPL_H
 #define SPS_SPL_H
 
-#include "value.h"
+#include "internal/value.h"
 
 #include <stdbool.h>
 #include <stddef.h>

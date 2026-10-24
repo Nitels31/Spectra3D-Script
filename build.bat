@@ -5,7 +5,7 @@ set "CXX=C:/msys64/ucrt64/bin/g++.exe"
 set "MSYS_BIN=C:\msys64\ucrt64\bin"
 set "PATH=%MSYS_BIN%;%PATH%"
 set "CFLAGS=-std=c11 -O2 -Wall -Wextra -Wno-unused-parameter -Wno-clobbered -static -Isrc -Iinclude"
-set "CORE=src/arena.c src/object.c src/dict.c src/methods.c src/spl.c src/spslib.c src/lexer.c src/parser.c src/compiler.c src/vm.c src/program.c src/builtins.c src/opcode.c src/regex.c"
+set "CORE=src/arena.c src/object.c src/dict.c src/methods.c src/spl.c src/spslib.c src/lexer.c src/parser.c src/compiler.c src/vm.c src/program.c src/builtins.c src/regex.c src/term.c"
 set "API=src/api/api_value.c src/api/api_context.c src/api/api_function.c src/api/api_class.c src/api/api_compiler.c src/api/api_version.c"
 
 if not exist bin mkdir bin

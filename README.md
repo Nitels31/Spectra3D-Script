@@ -562,6 +562,11 @@ A full example: `examples/host/host_example.cpp` (a mini engine) and
                                                     src/vm.c
 ```
 
+> [!NOTE]
+> Internal headers (the ones that used to live in `src/`) have been moved to
+> `include/internal/`. Source files use `#include "internal/X.h"` which is
+> resolved via the `-Iinclude` compiler flag.
+
 | File              | What it does                                              |
 |-------------------|-----------------------------------------------------------|
 | `src/arena.c`     | the arena of the compiler: one free — no leaks            |
@@ -573,9 +578,9 @@ A full example: `examples/host/host_example.cpp` (a mini engine) and
 | `src/dict.c`      | the dictionary (a hash map with open addressing)           |
 | `src/methods.c`   | the methods of the types                                   |
 | `src/spl.c`       | the SPL format of Spectra3D: the parser and the writer     |
-| `src/spslib.c`    | the standard library: the files, the time, the json, the math |
+| `src/spslib.c`    | the standard library: the files, the time, the json, the math, the colors |
 | `src/builtins.c`  | the built-in functions                                     |
-| `src/program.c`   | the container of the program + the serialization of `.spc`  |
+| `src/program.c`   | the container of the program + `OpCode` enum + `OP_NAMES[]` + serialization of `.spc` |
 | `src/api/`        | the implementation of the public C API                     |
 
 ### The format of `.spc`
@@ -787,6 +792,30 @@ try {
 } catch err {
     print(err);   // invalid regular expression: the group is not closed
 }
+```
+
+### Colors
+
+Print to the terminal with ANSI color codes. Colors are emitted only when
+the output is a terminal (TTY) — piped output is always clean.
+
+| Function | What it does |
+|---|---|
+| `printRed(...)` | prints all args separated by spaces, in red |
+| `printGreen(...)` | green |
+| `printYellow(...)` | yellow |
+| `printBlue(...)` | blue |
+| `printCyan(...)` | cyan |
+| `printMagenta(...)` | magenta |
+| `printBold(...)` | bold white |
+| `printColored(color, ...)` | first arg is a color name string: `"red"` `"green"` `"yellow"` `"blue"` `"cyan"` `"magenta"` `"bold"` `"dim"` `"reset"` |
+
+```sps
+printRed("Error: file not found")
+printGreen("Build ok")
+printYellow("Warning: unused variable")
+printBlue("Info: loading...")
+printColored("cyan", "value =", 42)
 ```
 
 ## The performance

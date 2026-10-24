@@ -2,7 +2,7 @@
 #ifndef SPS_BUILTINS_H
 #define SPS_BUILTINS_H
 
-#include "value.h"
+#include "internal/value.h"
 
 typedef struct {
     const char* name;

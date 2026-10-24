@@ -3,8 +3,8 @@
 // Keys are strings or integers, values are any value. The table grows
 // automatically and never shrinks, so lookups stay O(1).
 
-#include "dict.h"
-#include "vm.h"
+#include "internal/dict.h"
+#include "internal/vm.h"
 
 #include <stdio.h>
 #include <stdlib.h>

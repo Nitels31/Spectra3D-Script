@@ -1,9 +1,10 @@
 // Spectra3D Script - virtual machine (stack based bytecode interpreter)
-#include "vm.h"
-#include "builtins.h"
-#include "dict.h"
-#include "methods.h"
-#include "spslib.h"
+#include "internal/vm.h"
+#include "internal/builtins.h"
+#include "internal/dict.h"
+#include "internal/methods.h"
+#include "internal/spslib.h"
+#include "internal/term.h"
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -250,14 +251,22 @@ void vm_runtime_error(VM* vm, int line, const char* fmt, ...) {
     }
 
     fflush(stdout);
-    fprintf(stderr, "%s:%d: error: %s\n", vm->script_name ? vm->script_name : "<script>",
-            line, message);
+    term_color(stderr, TERM_DIM);
+    fprintf(stderr, "%s:%d: ", vm->script_name ? vm->script_name : "<script>",
+            line);
+    term_reset(stderr);
+    term_color(stderr, TERM_BRED);
+    fprintf(stderr, "error");
+    term_reset(stderr);
+    fprintf(stderr, ": %s\n", message);
 
     for (int i = vm->frame_count - 1; i >= 0; i--) {
         CallFrame* frame = &vm->frames[i];
+        term_color(stderr, TERM_DIM);
         fprintf(stderr, "  in %s (line %d)\n",
                 frame->closure && frame->closure->proto->name ? frame->closure->proto->name : "?",
                 frame->line);
+        term_reset(stderr);
     }
     fflush(stderr);
     vm->exit_code = 1;

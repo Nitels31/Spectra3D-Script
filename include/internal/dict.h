@@ -2,7 +2,7 @@
 #ifndef SPS_DICT_H
 #define SPS_DICT_H
 
-#include "value.h"
+#include "internal/value.h"
 
 ObjDict* dict_new(VM* vm);
 bool     dict_get(ObjDict* dict, Value key, Value* out);

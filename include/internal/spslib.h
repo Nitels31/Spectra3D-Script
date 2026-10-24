@@ -2,7 +2,7 @@
 #ifndef SPS_STDLIB_H
 #define SPS_STDLIB_H
 
-#include "value.h"
+#include "internal/value.h"
 
 Value sps_read_file(VM* vm, int argc, Value* args, void* user);
 Value sps_write_file(VM* vm, int argc, Value* args, void* user);
@@ -90,5 +90,15 @@ ObjString* sps_format_value(VM* vm, Value value, const char* spec, int spec_leng
 ObjString* sps_format_template(VM* vm, const char* text, int length, Value* args, int argc);
 Value sps_builtin_format(VM* vm, int argc, Value* args, void* user);
 Value sps_method_format(VM* vm, int argc, Value* args, void* user);
+
+// colored print functions
+Value sps_print_red(VM* vm, int argc, Value* args, void* user);
+Value sps_print_green(VM* vm, int argc, Value* args, void* user);
+Value sps_print_yellow(VM* vm, int argc, Value* args, void* user);
+Value sps_print_blue(VM* vm, int argc, Value* args, void* user);
+Value sps_print_cyan(VM* vm, int argc, Value* args, void* user);
+Value sps_print_magenta(VM* vm, int argc, Value* args, void* user);
+Value sps_print_bold(VM* vm, int argc, Value* args, void* user);
+Value sps_print_colored(VM* vm, int argc, Value* args, void* user);
 
 #endif /* SPS_STDLIB_H */

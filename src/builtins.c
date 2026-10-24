@@ -1,8 +1,8 @@
 // Spectra3D Script - built-in functions
-#include "builtins.h"
-#include "dict.h"
-#include "spslib.h"
-#include "vm.h"
+#include "internal/builtins.h"
+#include "internal/dict.h"
+#include "internal/spslib.h"
+#include "internal/vm.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -384,7 +384,17 @@ const BuiltinDef SPS_BUILTINS[] = {
     { "random_range",  sps_random_range },
 
     // formatting
-    { "format",        sps_builtin_format }
+    { "format",        sps_builtin_format },
+
+    // colored output
+    { "printRed",      sps_print_red },
+    { "printGreen",    sps_print_green },
+    { "printYellow",   sps_print_yellow },
+    { "printBlue",     sps_print_blue },
+    { "printCyan",     sps_print_cyan },
+    { "printMagenta",  sps_print_magenta },
+    { "printBold",     sps_print_bold },
+    { "printColored",  sps_print_colored },
 };
 
 const int SPS_BUILTIN_COUNT = (int)(sizeof(SPS_BUILTINS) / sizeof(SPS_BUILTINS[0]));

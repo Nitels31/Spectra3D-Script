@@ -3,7 +3,7 @@
 // The pattern is parsed into a tree of the nodes, the tree is compiled into
 // a bytecode and the matcher walks the bytecode with an explicit stack.
 
-#include "regex.h"
+#include "internal/regex.h"
 
 #include <ctype.h>
 #include <stdarg.h>

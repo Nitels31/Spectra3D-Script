@@ -4,10 +4,11 @@
 //   - module level variables live in the global table
 //   - function level variables live in local slots of the frame
 //   - variables captured by nested functions become upvalues
-#include "compiler.h"
-#include "builtins.h"
-#include "methods.h"
-#include "parser.h"
+#include "internal/compiler.h"
+#include "internal/builtins.h"
+#include "internal/methods.h"
+#include "internal/parser.h"
+#include "internal/term.h"
 
 #include <stdarg.h>
 #include <setjmp.h>
@@ -758,7 +759,13 @@ static void compile_error(Compiler* compiler, int line, const char* fmt, ...) {
     if (compiler->on_error) {
         compiler->on_error(compiler->error_user, line, message);
     } else {
-        fprintf(stderr, "%s:%d: error: %s\n", compiler->file_name, line, message);
+        term_color(stderr, TERM_DIM);
+        fprintf(stderr, "%s:%d: ", compiler->file_name, line);
+        term_reset(stderr);
+        term_color(stderr, TERM_BRED);
+        fprintf(stderr, "error");
+        term_reset(stderr);
+        fprintf(stderr, ": %s\n", message);
     }
     longjmp(compiler->error_jump, 1);
 }

@@ -1,7 +1,7 @@
 // Spectra3D Script - the values of the public API
 
 #include "api_internal.h"
-#include "../spl.h"
+#include "internal/spl.h"
 
 #include <stdio.h>
 

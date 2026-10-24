@@ -2,9 +2,9 @@
 #ifndef SPS_API_INTERNAL_H
 #define SPS_API_INTERNAL_H
 
-#include "../value.h"
-#include "../vm.h"
-#include "../program.h"
+#include "internal/value.h"
+#include "internal/vm.h"
+#include "internal/program.h"
 #include "sps/sps.h"
 
 #include <stdlib.h>

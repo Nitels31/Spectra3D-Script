@@ -4,10 +4,10 @@
 // argument: fn(vm, argc, args) where args[0] is the receiver and
 // args[1..argc) are the arguments of the call.
 
-#include "methods.h"
-#include "dict.h"
-#include "spslib.h"
-#include "vm.h"
+#include "internal/methods.h"
+#include "internal/dict.h"
+#include "internal/spslib.h"
+#include "internal/vm.h"
 
 #include <stdio.h>
 #include <stdlib.h>

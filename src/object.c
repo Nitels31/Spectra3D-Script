@@ -3,8 +3,8 @@
 // Every heap object lives on the vm->objects list. There is no garbage
 // collector, so the runtime never pauses; all objects are released at once
 // when the virtual machine is destroyed => no memory leaks.
-#include "vm.h"
-#include "dict.h"
+#include "internal/vm.h"
+#include "internal/dict.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -2,9 +2,9 @@
 #ifndef SPS_COMPILER_H
 #define SPS_COMPILER_H
 
-#include "ast.h"
-#include "program.h"
-#include "vm.h"
+#include "internal/ast.h"
+#include "internal/program.h"
+#include "internal/vm.h"
 
 #include <stdbool.h>
 

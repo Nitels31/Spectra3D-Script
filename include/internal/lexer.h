@@ -2,7 +2,7 @@
 #ifndef SPS_LEXER_H
 #define SPS_LEXER_H
 
-#include "arena.h"
+#include "internal/arena.h"
 
 #include <stdbool.h>
 #include <stdint.h>

@@ -1,9 +1,8 @@
 // Spectra3D Script - bytecode runner (spsvm)
 //
 //   spsvm program.spc
-#include "opcode.h"
-#include "program.h"
-#include "vm.h"
+#include "internal/program.h"
+#include "internal/vm.h"
 
 #include <stdio.h>
 #include <stdlib.h>

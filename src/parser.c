@@ -1,5 +1,5 @@
-#include "parser.h"
-#include "value.h"
+#include "internal/parser.h"
+#include "internal/value.h"
 
 #include <stdarg.h>
 #include <stdio.h>

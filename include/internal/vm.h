@@ -2,7 +2,7 @@
 #ifndef SPS_VM_H
 #define SPS_VM_H
 
-#include "program.h"
+#include "internal/program.h"
 
 #include <setjmp.h>
 

@@ -2,8 +2,8 @@
 #ifndef SPS_PARSER_H
 #define SPS_PARSER_H
 
-#include "ast.h"
-#include "arena.h"
+#include "internal/ast.h"
+#include "internal/arena.h"
 
 #include <setjmp.h>
 

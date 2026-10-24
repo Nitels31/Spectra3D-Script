@@ -1,7 +1,7 @@
 // Spectra3D Script - the native functions of the public API
 
 #include "api_internal.h"
-#include "../builtins.h"
+#include "internal/builtins.h"
 
 #include <stdio.h>
 

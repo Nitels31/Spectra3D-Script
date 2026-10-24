@@ -2,7 +2,7 @@
 #ifndef SPS_AST_H
 #define SPS_AST_H
 
-#include "lexer.h"
+#include "internal/lexer.h"
 
 #include <stdbool.h>
 #include <stdint.h>

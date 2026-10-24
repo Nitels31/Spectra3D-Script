@@ -1,8 +1,8 @@
 // Spectra3D Script - the compiler of the public API
 
 #include "api_internal.h"
-#include "compiler.h"
-#include "parser.h"
+#include "internal/compiler.h"
+#include "internal/parser.h"
 
 #include <stdio.h>
 

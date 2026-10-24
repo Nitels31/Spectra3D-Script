@@ -3,9 +3,9 @@
 // The parser and the writer of the compact format of Spectra3D. See spl.h for
 // the description of the format.
 
-#include "spl.h"
-#include "dict.h"
-#include "vm.h"
+#include "internal/spl.h"
+#include "internal/dict.h"
+#include "internal/vm.h"
 
 #include <ctype.h>
 #include <stdio.h>
